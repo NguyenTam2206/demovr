@@ -64,7 +64,7 @@ class App {
   }
 
   initScene() {
-    //Create a marker to indicate where the joint is
+    // Create a marker to indicate where the joint is
     const geometry = new THREE.SphereBufferGeometry(0.1, 8, 8);
     const material = new THREE.MeshStandardMaterial({ color: 0xaa0000 });
     this.marker = new THREE.Mesh(geometry, material);
@@ -86,15 +86,15 @@ class App {
     this.helper = new CannonHelper(this.scene, this.world);
 
     const groundShape = new CANNON.Plane();
-    //const groundMaterial = new CANNON.Material();
-    const groundBody = new CANNON.Body({ mass: 0 }); //, material: groundMaterial });
+    const groundMaterial = new CANNON.Material();
+    const groundBody = new CANNON.Body({ mass: 0, material: groundMaterial });
     groundBody.quaternion.setFromAxisAngle(
       new CANNON.Vec3(1, 0, 0),
       -Math.PI / 2
     );
     groundBody.addShape(groundShape);
     this.world.add(groundBody);
-    this.helper.addVisual(groundBody, 0xffaa00);
+    this.helper.addVisual(groundBody, 0xffa00);
 
     // Joint body
     const shape = new CANNON.Sphere(0.1);
